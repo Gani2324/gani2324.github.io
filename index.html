@@ -10,54 +10,542 @@
 
 <style>
 
-/* CLASSIC TYPOGRAPHY UPGRADE — PRESERVE ORIGINAL THEME */
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* =====================================
+   GLOBAL THEME
+===================================== */
+
+:root {
+    --bg: #ffffff;
+    --light: #f8f7f3;
+    --dark: #171717;
+    --text: #333333;
+    --muted: #777777;
+    --accent: #e2b83f;
+    --border: #e8e5dd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 88%;
+    max-width: 1180px;
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
+    color: var(--dark);
     font-weight: 500;
-    letter-spacing: -1px;
+}
+
+/* =====================================
+   HEADER & NAVIGATION
+===================================== */
+
+header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.logo::after {
+    content: "GG.";
+}
+
+.navlinks {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.navlinks a {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--dark);
+    transition: color 0.3s ease;
+}
+
+.navlinks a:hover {
+    color: #bd921d;
+}
+
+/* =====================================
+   HERO SECTION
+===================================== */
+
+.hero {
+    background: var(--dark);
+    color: white;
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 100px 0;
 }
 
 .hero h1 {
-    font-size: clamp(44px, 6vw, 76px);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 7vw, 82px);
+    font-weight: 500;
+    color: #ffffff;
     line-height: 1.12;
     letter-spacing: -2px;
+    max-width: 850px;
+    margin-bottom: 25px;
 }
 
-section h2 {
-    font-size: clamp(32px, 4vw, 46px);
-    line-height: 1.2;
-    letter-spacing: -1.3px;
+.hero p {
+    color: #c8c8c8;
+    font-size: 16px;
+    margin-bottom: 8px;
 }
 
-.cards h3,
-.card h3,
-.timeline h3 {
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 35px;
+}
+
+.actions a {
+    color: white;
+    font-size: 14px;
+}
+
+.actions .btn {
+    background: var(--accent);
+    color: var(--dark);
+    padding: 14px 27px;
+    font-weight: 700;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+.actions .btn:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+.actions a:not(.btn):hover {
+    color: var(--accent);
+}
+
+.down {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--accent);
+    font-size: 25px;
+}
+
+/* =====================================
+   GENERAL SECTIONS
+===================================== */
+
+section {
+    padding: 90px 0;
+    background: var(--bg);
+}
+
+section.light {
+    background: var(--light);
+}
+
+.section-head {
+    margin-bottom: 45px;
+}
+
+.section-head span {
+    display: inline-block;
+    color: #a9821c;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.section-head h2 {
     font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 4vw, 48px);
     font-weight: 500;
-    letter-spacing: -0.5px;
+    letter-spacing: -1px;
+    line-height: 1.2;
 }
 
-p {
-    font-family: 'DM Sans', sans-serif;
-    line-height: 1.8;
+section p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.9;
 }
+
+/* =====================================
+   ABOUT SECTION
+===================================== */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.about-grid h3 {
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+
+.stat {
+    padding: 30px;
+    background: white;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.stat strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.stat p {
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+/* =====================================
+   EDUCATION & EXPERIENCE TIMELINE
+===================================== */
+
+.timeline {
+    border-left: 2px solid var(--accent);
+    margin-left: 8px;
+    padding-left: 35px;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 0 0 38px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -43px;
+    top: 9px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid white;
+}
+
+.timeline-item h3 {
+    font-size: 23px;
+    margin-bottom: 9px;
+}
+
+.timeline-item p {
+    margin-bottom: 5px;
+}
+
+/* =====================================
+   PROJECTS
+===================================== */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.card {
+    padding: 32px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+}
+
+.card h3 {
+    font-size: 25px;
+    line-height: 1.35;
+    margin-bottom: 18px;
+}
+
+.card p {
+    font-size: 14px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 23px;
+}
+
+.tags span {
+    background: #f6f0df;
+    color: #806018;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 2px;
+}
+
+/* =====================================
+   SKILLS
+===================================== */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+.skills span {
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--dark);
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.skills span:hover {
+    background: var(--dark);
+    color: white;
+    border-color: var(--dark);
+}
+
+/* =====================================
+   CERTIFICATIONS
+===================================== */
+
+.cert-list {
+    list-style: none;
+    max-width: 850px;
+}
+
+.cert-list li {
+    padding: 19px 5px;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+    color: var(--text);
+    position: relative;
+    padding-left: 28px;
+}
+
+.cert-list li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: #bd921d;
+}
+
+/* =====================================
+   ACHIEVEMENTS
+===================================== */
+
+#achievements .timeline-item h3 {
+    font-size: 24px;
+}
+
+/* =====================================
+   CONTACT
+===================================== */
+
+.contact {
+    text-align: center;
+}
+
+.contact .section-head {
+    margin-bottom: 25px;
+}
+
+.contact p {
+    margin: 13px 0;
+}
+
+.contact a {
+    color: #9b7416;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.contact a:hover {
+    color: var(--dark);
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer {
+    background: var(--dark);
+    color: #c8c8c8;
+    text-align: center;
+    padding: 25px 15px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
 
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 42px;
+
+    .container {
+        width: 90%;
     }
 
-    section h2 {
-        font-size: 32px;
+    nav {
+        min-height: 70px;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 15px 0;
+    }
+
+    .navlinks {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .navlinks a {
+        font-size: 10px;
+    }
+
+    .hero {
+        min-height: 500px;
+        padding: 80px 0;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    section {
+        padding: 65px 0;
+    }
+
+    .section-head h2 {
+        font-size: 35px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 24px;
+    }
+
+    .timeline {
+        padding-left: 25px;
+    }
+
+    .timeline-item::before {
+        left: -33px;
+    }
+
+    .timeline-item h3 {
+        font-size: 21px;
+    }
+
+    .actions {
+        gap: 18px;
     }
 }
+
+@media (max-width: 420px) {
+
+    .navlinks {
+        gap: 10px;
+    }
+
+    .navlinks a {
+        font-size: 9px;
+    }
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .section-head h2 {
+        font-size: 31px;
+    }
+}
+
 
 </style>
 </head>
